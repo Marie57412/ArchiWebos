@@ -332,4 +332,5 @@ footer nav ul {
 .login_section p {
 	text-align: center;
 	margin-top: 15px;
+	cursor: pointer;
 }
