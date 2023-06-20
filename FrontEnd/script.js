@@ -5,7 +5,7 @@ fetch('http://localhost:5678/api/works')
   .then(response => response.json())
   .then(data => {
     worksData = data;
-    afficherGallery(data);
+    picture(data);
     console.log(data[0]);
     return fetch('http://localhost:5678/api/categories');
   })
@@ -20,7 +20,7 @@ fetch('http://localhost:5678/api/works')
   });
 
 /* fonction qui permet affiche la gallery */
-function afficherGallery(data){
+function picture(data){
   for(i =0 ; i < data.length ; i++)
   {
     const gallery = document.querySelector('.gallery');
@@ -66,7 +66,7 @@ function filters (category){
       console.log(filteredData);
 
       // Utilisation des projets filtrés pour afficher la galerie mise à jour
-      afficherGallery(filteredData);
+      picture(filteredData);
     });
   });
 }
