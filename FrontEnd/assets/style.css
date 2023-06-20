@@ -318,5 +318,18 @@ footer nav ul {
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   border: none;
   margin-top: 7px;
-  margin-bottom: 7px;
+  
+}
+
+.login_form label {
+	padding-top: 30px;
+}
+
+#motDePasse {
+	margin-bottom: 37px;
+}
+
+.login_section p {
+	text-align: center;
+	margin-top: 15px;
 }
