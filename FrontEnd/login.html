@@ -12,9 +12,10 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="login.js"></script>
+    
   </head>
   <body>
+	<div class="modale"></div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
@@ -29,14 +30,14 @@
     <main>
       <section class="login_section">
         <h2>Log In</h2>
-        <p class="error"></p>
-        <form class="login_form" action="#" method="post">
+        <form id="login_form" action="#" method="post">
           <label for="email">E-mail</label>
           <input type="email" name="email" id="email" required />
           <label for="motDePasse">Mot de passe</label>
-          <input type="password" name="motDePasse" id="motDePasse" required />
+          <input type="password" name="password" id="password" required />
           <input type="submit" value="Se connecter" class="submit" />
         </form>
+		<div id="error-message"></div>
         <p><a>Mot de passe oublié</a></p>
       </section>
     </main>
@@ -48,4 +49,5 @@
       </nav>
     </footer>
   </body>
+  <script src="login.js"></script>
 </html>

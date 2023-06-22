@@ -307,13 +307,13 @@ footer nav ul {
   text-align: center;
 }
 
-.login_form {
+#login_form {
   display: flex;
   flex-direction: column;
   margin-top: 37px;
 }
 
-.login_form input {
+#login_form input {
   height: 51px;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   border: none;
@@ -321,11 +321,11 @@ footer nav ul {
   
 }
 
-.login_form label {
+#login_form label {
 	padding-top: 30px;
 }
 
-#motDePasse {
+#password {
 	margin-bottom: 37px;
 }
 
@@ -334,3 +334,9 @@ footer nav ul {
 	margin-top: 15px;
 	cursor: pointer;
 }
+
+#error-message {
+	color: red;
+	display: none; /* Masqué par défaut */
+	text-align: center;
+  }
