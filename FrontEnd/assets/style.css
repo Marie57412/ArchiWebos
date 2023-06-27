@@ -134,6 +134,43 @@ body {
   font-family: "Work Sans";
   font-size: 14px;
 }
+
+/**banniere**/
+.banner{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	height: 60px;
+	width: 100%;
+	background-color: black;
+}
+.banner-content{
+	color: white;
+}
+
+.editor-content {
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.editor-button{
+	background-color: #fff;
+	min-width: 100px;
+	border-style: none;
+	border: 1px solid ;
+	border-radius: 60px;
+	
+	font-family: 'Work Sans', sans-serif;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 11px 23px;
+	cursor: pointer;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -340,3 +377,17 @@ footer nav ul {
 	display: none; /* Masqué par défaut */
 	text-align: center;
   }
+
+.logout_btn {
+	display: none;
+}
+
+button.modif {
+    background: white;
+    border: none;
+    padding: 0px 0px 24px 0px;
+    font-size: 13px;
+}
+.modification {
+    display: flex;
+}
