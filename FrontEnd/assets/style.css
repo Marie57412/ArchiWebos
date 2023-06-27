@@ -390,4 +390,6 @@ button.modif {
 }
 .modification {
     display: flex;
+	margin-left: 54px;
+    margin-top: 20px;
 }
