@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-		crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
       rel="stylesheet"
@@ -18,22 +22,23 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-	<div class="banner" id="editor_mode" style="display: none;">
-		<p class="editor-banner-content ">
-			<i class="fa-regular fa-pen-to-square fa-lg"></i>
-			Mode édition
-		</p>
-		<button class="editor-button">publier les changements</button>
-	
-	</div>
+    <div class="banner" id="editor_mode">
+      <p class="editor-banner-content">
+        <i class="fa-regular fa-pen-to-square"></i>
+        Mode édition
+      </p>
+      <button class="editor-button">publier les changements</button>
+    </div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <a href="login.html"><li>login</li></a>
-		  <a href="./index.html"><li class="logout_btn">logout</li></a>
+          <li class="logout_btn hidden">
+            <a href="./index.html">logout</a>
+          </li>
+          <a href="login.html"><li class="login_btn">login</li></a>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -42,12 +47,16 @@
       <section id="introduction">
         <figure class>
           <img src="./assets/images/sophie-bluel.png" alt="" />
-		  <div class="modification">
-            <i class="fa-regular fa-pen-to-square" style="color: #000000;"></i>
+          <div class="modification">
+            <i class="fa-regular fa-pen-to-square"></i>
             <button class="modif">modifier</button>
           </div>
         </figure>
         <article>
+			<div class="modification alignModif">
+				<i class="fa-regular fa-pen-to-square"></i>
+				<button class="modif">modifier</button>
+			  </div>
           <h2>Designer d'espace</h2>
           <p>
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
@@ -67,9 +76,18 @@
         </article>
       </section>
       <section id="portfolio">
-		
-        <h2>Mes Projets</h2>
-		
+        <div class="modifflex">
+          <h2>Mes Projets</h2>
+		  <aside id="modal1" class="modal" style="display: none;">
+			<div class="modal-wrapper">
+
+			</div>
+		  </aside>
+          <div class="modification">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <button class="modif">modifier</button>
+          </div>
+        </div>
         <div class="filters-btn"></div>
         <div class="gallery"></div>
       </section>

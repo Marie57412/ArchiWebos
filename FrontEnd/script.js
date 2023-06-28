@@ -70,3 +70,75 @@ function filters (category){
     });
   });
 }
+function checkConnection() {
+  // Récupération du token depuis le sessionStorage
+  const token = sessionStorage.getItem("token");
+
+  // Cibler les éléments à modifier lors de la connexion
+  const logoutBtn = document.querySelector(".logout_btn");
+  const loginBtn = document.querySelector(".login_btn");
+  const modifContainers = document.querySelectorAll(".modification");
+  const modifBtns = document.querySelectorAll(".modif");
+  const iconModifs = document.querySelectorAll(".fa-regular.fa-pen-to-square");
+  
+  // Cibler la bannière
+  const banner = document.querySelector(".banner");
+
+  if (token) {
+    // Connecté
+    console.log("Connecté");
+
+    // Appeler les fonctions ou effectuer les actions appropriées pour l'utilisateur connecté
+
+    logoutBtn.style.display = "block";
+    loginBtn.style.display = "none";
+
+    modifBtns.forEach(btn => {
+      btn.innerHTML = "modifier";
+    });
+
+    iconModifs.forEach(icon => {
+      icon.className = "fa-regular fa-pen-to-square";
+    });
+
+    logoutBtn.addEventListener("click", function() {
+      // Retirer le token du sessionStorage
+      sessionStorage.removeItem("token");
+      console.log("Déconnexion réussie");
+    });
+
+    // Afficher les boutons "modifier"
+    modifContainers.forEach(container => {
+      container.style.display = "flex";
+    });
+
+    // Afficher la bannière
+    banner.style.display = "flex";
+  } else {
+    // Non connecté
+    console.log("Non connecté");
+
+    logoutBtn.style.display = "none";
+    loginBtn.style.display = "block";
+
+    modifBtns.forEach(btn => {
+      btn.innerHTML = "";
+    });
+
+    iconModifs.forEach(icon => {
+      icon.className = "fa-regular fa-pen-to-square";
+    });
+
+    // Masquer les boutons "modifier"
+    modifContainers.forEach(container => {
+      container.style.display = "none";
+    });
+
+    // Masquer la bannière
+    banner.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  checkConnection();
+});

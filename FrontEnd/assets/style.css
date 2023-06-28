@@ -135,41 +135,6 @@ body {
   font-size: 14px;
 }
 
-/**banniere**/
-.banner{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-	height: 60px;
-	width: 100%;
-	background-color: black;
-}
-.banner-content{
-	color: white;
-}
-
-.editor-content {
-	color: black;
-	cursor: pointer;
-	text-decoration: none;
-}
-
-.editor-button{
-	background-color: #fff;
-	min-width: 100px;
-	border-style: none;
-	border: 1px solid ;
-	border-radius: 60px;
-	
-	font-family: 'Work Sans', sans-serif;
-	text-align: center;
-	font-size: 14px;
-	font-weight: 700;
-	padding: 11px 23px;
-	cursor: pointer;
-}
 
 header {
   display: flex;
@@ -244,7 +209,7 @@ li:hover {
 }
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin-top: 6px;
 }
 
 .filters-btn {
@@ -387,9 +352,63 @@ button.modif {
     border: none;
     padding: 0px 0px 24px 0px;
     font-size: 13px;
+	
 }
-.modification {
-    display: flex;
-	margin-left: 54px;
-    margin-top: 20px;
+
+
+.hidden {
+	display: none;
 }
+
+
+.fa-pen-to-square {
+	font-size: 20px;
+	margin-right: 12px;
+	margin-left: 56px;
+	margin-top: 12px;
+}
+
+.modif  {
+	margin-top: 16px;
+	cursor: pointer;
+}
+
+.modifflex {
+	display: flex;
+	justify-content: center;
+}
+
+.alignModif {
+	margin-left: -55px;
+}
+
+/*banniere*/
+.banner {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	height: 60px;
+	width: 100%;
+	background-color: black;
+  }
+  
+  .editor-banner-content {
+	color: white;
+	margin-top: -16px;
+  }
+  
+  .editor-button {
+	background-color: #fff;
+	min-width: 100px;
+	border-style: none;
+	border: 1px solid;
+	border-radius: 60px;
+	font-family: 'Work Sans', sans-serif;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 11px 23px;
+	cursor: pointer;
+  }
