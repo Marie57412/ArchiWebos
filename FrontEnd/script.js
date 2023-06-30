@@ -172,8 +172,8 @@ modal.addEventListener('click', function(event) {
     closeModal();
   }
 });
-//galerie modal
 
+//galerie modal
 function pictureInModal(data) {
   const modalWrapper = document.querySelector('.modal-wrapper');
   modalWrapper.innerHTML = '';
@@ -248,6 +248,21 @@ function pictureInModal(data) {
   addButton.innerText = 'Ajouter une photo';
   addButton.classList.add('add-photo-button');
 
+  addButton.addEventListener('click', function() {
+    // Masquer la première fenêtre (modalWrapper)
+    modalWrapper.style.display = 'none';
+
+    // Créer la deuxième fenêtre
+    const window2 = document.createElement('div');
+    window2.classList.add('window2');
+    
+    const leftArrow = document.createElement('i');
+    leftArrow.classList.add('fa', 'fa-arrow-left');
+    // Ajouter la deuxième fenêtre à la modal
+    modal.appendChild(window2);
+    window2.appendChild(leftArrow);
+  });
+
   // Ajout Supprimer la galerie
   const deleteGalleryElement = document.createElement('p');
   deleteGalleryElement.innerText = 'Supprimer la galerie';
@@ -261,14 +276,14 @@ function pictureInModal(data) {
   function deletePhoto(index) {
     // Supprimer la photo du tableau de données
     const deletedItem = data.splice(index, 1)[0];
-  
+
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-  
+
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector('.gallery');
     const galleryItems = gallery.querySelectorAll('figure');
-  
+
     // Trouver l'élément correspondant à la photo supprimée et le supprimer de la galerie en dehors de la modal
     for (let i = 0; i < galleryItems.length; i++) {
       const item = galleryItems[i];
@@ -283,19 +298,20 @@ function pictureInModal(data) {
   function deleteGallery() {
     // Vider le tableau de données
     data = [];
-  
+
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-  
+
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
-  
+
     // Ajouter le message "Supprimer la galerie" dans la modal
     const deleteGalleryElement = document.createElement('p');
     deleteGalleryElement.innerText = 'Supprimer la galerie';
     deleteGalleryElement.classList.add('delete-gallery');
     deleteGalleryElement.addEventListener('click', deleteGallery);
-  
+
     modalWrapper.appendChild(deleteGalleryElement);
-  }}
+  }
+}

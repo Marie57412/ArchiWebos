@@ -547,3 +547,22 @@ hr {
 	text-align: center;
 	padding-top: 3px;
 }
+
+.window2 {
+  background-color: white;
+  width: 630px;
+  overflow: auto;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.fa-arrow-left {
+  font-size: 21px;
+  height: 21px;
+}
