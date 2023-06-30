@@ -494,25 +494,24 @@ hr {
 }
 
 .delete-gallery {
-  color: #D65353;
+  color: #d65353;
   font-family: syne;
   font-weight: 400;
   font-size: 14px;
   cursor: pointer;
-
 }
 
 .fa-times {
   text-align: right;
-	cursor: pointer;
-	font-size: 20px;
-	width: 16px;
-	position: absolute;
-	top: 30px;
-	right: 36px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 16px;
+  position: absolute;
+  top: 30px;
+  right: 36px;
 }
 
-.image-container  {
+.image-container {
   position: relative;
 }
 
@@ -528,10 +527,10 @@ hr {
   background-color: black;
   color: white;
   width: 17px;
-	height: 17px;
+  height: 17px;
   font-size: 9px;
-	text-align: center;
-	padding-top: 3px;
+  text-align: center;
+  padding-top: 3px;
 }
 
 .fa-trash-can {
@@ -541,11 +540,22 @@ hr {
   z-index: 1;
   color: white;
   background-color: black;
-	width: 17px;
-	height: 17px;
+  width: 17px;
+  height: 17px;
   font-size: 9px;
-	text-align: center;
-	padding-top: 3px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.fa-arrow-left {
+  font-size: 21px;
+  height: 21px;
+  text-align: left;
+  cursor: pointer;
+  width: 16px;
+  position: absolute;
+  top: 30px;
+  left: 36px;
 }
 
 .window2 {
@@ -561,8 +571,76 @@ hr {
   box-sizing: border-box;
   border-radius: 10px;
 }
+.title-window {
+  font-size: 26px;
+  color: black;
+  font-weight: 400;
+  font-family: Work Sans, serif;
+  position: absolute;
+  top: 50px;
+}
+.addphoto {
+  background-color: #e8f1f6;
+  border-radius: 3px;
+  height: 170px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: -123px;
+}
 
-.fa-arrow-left {
-  font-size: 21px;
-  height: 21px;
+.text-format {
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.fa-image {
+  margin: 20px;
+  font-size: 56px;
+  color: rgb(189, 187, 187);
+  background-color: #e8f1f6;
+}
+
+.add-picture-button {
+  height: 36px;
+  width: 173px;
+  text-align: center;
+  background-color: #cbd6dc;
+  color: #306685;
+  font-size: 14px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.textAdd {
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-contenair {
+  display: flex;
+  flex-direction: column;
+  width: 76%;
+  padding-top: 33px;
+}
+
+#category {
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+  margin-top: 11px;
+  margin-bottom: 30px;
+}
+
+#title {
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+  margin-top: 11px;
+  margin-bottom: 30px;
 }
