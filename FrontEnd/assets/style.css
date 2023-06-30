@@ -435,6 +435,7 @@ button.modif {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .modal-image {
@@ -563,7 +564,7 @@ hr {
   width: 630px;
   overflow: auto;
   max-width: calc(100vw - 20px);
-  max-height: calc(100vh - 20px);
+  height: 670px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -571,6 +572,7 @@ hr {
   box-sizing: border-box;
   border-radius: 10px;
 }
+
 .title-window {
   font-size: 26px;
   color: black;
@@ -579,6 +581,7 @@ hr {
   position: absolute;
   top: 50px;
 }
+
 .addphoto {
   background-color: #e8f1f6;
   border-radius: 3px;
@@ -588,7 +591,7 @@ hr {
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-top: -123px;
+  margin-top: 50px;
 }
 
 .text-format {
@@ -643,4 +646,24 @@ hr {
   border: none;
   margin-top: 11px;
   margin-bottom: 30px;
+}
+
+.checkBtn {
+  width: 237px;
+  background-color: #A7A7A7;
+  height: 36px;
+  border-radius: 60px;
+  border: none;
+  margin-top: 30px;
+}
+
+.checkcolor{
+  color: white;
+  font-family: Syne;
+font-size: 14px;
+font-weight: 700;
+line-height: 17px;
+letter-spacing: 0em;
+text-align: center;
+
 }

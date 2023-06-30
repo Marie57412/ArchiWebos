@@ -255,6 +255,7 @@ function pictureInModal(data) {
     // Créer la deuxième fenêtre
     const window2 = document.createElement("div");
     window2.classList.add("window2", "modal");
+    
 
     const leftArrow = document.createElement("i");
     leftArrow.classList.add("fa", "fa-arrow-left");
@@ -304,12 +305,24 @@ function pictureInModal(data) {
     labelCategory.classList.add("label");
     labelCategory.innerText = "Catégorie";
 
+
+    const hrWindow2 = document.createElement("hr");
+     
+
     // Création de l'élément input
     const inputCategory = document.createElement("input");
     inputCategory.setAttribute("type", "text");
     inputCategory.classList.add("labelModal");
     inputCategory.setAttribute("id", "category");
     inputCategory.setAttribute("name", "category");
+
+
+    const btnCheck = document.createElement('button');
+    btnCheck.classList.add('checkBtn');
+
+    const checkText = document.createElement('p');
+    checkText.classList.add('checkcolor');
+    checkText.innerText = 'Valider';
 
     // Ajout des éléments à l'élément div
 
@@ -327,6 +340,9 @@ function pictureInModal(data) {
     formContenair.appendChild(inputElement);
     formContenair.appendChild(labelCategory);
     formContenair.appendChild(inputCategory);
+    window2.appendChild(hrWindow2);
+    window2.appendChild(btnCheck);
+    btnCheck.appendChild(checkText);
   });
 
   // Ajout Supprimer la galerie
