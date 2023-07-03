@@ -82,6 +82,9 @@ function checkConnection() {
   const modifBtns = document.querySelectorAll(".modif");
   const iconModifs = document.querySelectorAll(".fa-regular.fa-pen-to-square");
 
+  // Cibler les filtres
+  const filtersContainer = document.querySelector(".filters-btn");
+
   // Cibler la bannière
   const banner = document.querySelector(".banner");
 
@@ -113,6 +116,9 @@ function checkConnection() {
       container.style.display = "flex";
     });
 
+    // Masquer les filtres
+    filtersContainer.style.display = "none";
+
     // Afficher la bannière
     banner.style.display = "flex";
   } else {
@@ -134,6 +140,9 @@ function checkConnection() {
     modifContainers.forEach((container) => {
       container.style.display = "none";
     });
+
+    // Afficher les filtres
+    filtersContainer.style.display = "block";
 
     // Masquer la bannière
     banner.style.display = "none";
