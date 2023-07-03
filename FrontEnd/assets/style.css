@@ -633,11 +633,18 @@ hr {
 }
 
 #category {
-  height: 51px;
+  height: 54px;
   box-shadow: 0px 4px 14px 0px #00000017;
   border: none;
   margin-top: 11px;
   margin-bottom: 30px;
+  background-color: white;
+}
+
+
+.label {
+  display: flex;
+  flex-direction: column;
 }
 
 #title {

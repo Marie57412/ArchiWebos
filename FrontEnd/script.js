@@ -259,9 +259,17 @@ function pictureInModal(data) {
 
     const leftArrow = document.createElement("i");
     leftArrow.classList.add("fa", "fa-arrow-left");
+    leftArrow.addEventListener('click', function(){
+      modalWrapper.style.display = "flex";
+      const window2 = document.querySelector(".window2");     //retour fenêtre 1 
+      window2.style.display = "none";
+    })
 
     const cross = document.createElement("i");
     cross.classList.add("fa", "fa-times");
+    cross.addEventListener('click', function(){
+      closeModal();
+    })
 
     const titleWindow = document.createElement("h2");
     titleWindow.innerText = "Ajout photo";
@@ -307,14 +315,26 @@ function pictureInModal(data) {
 
 
     const hrWindow2 = document.createElement("hr");
-     
+   
 
-    // Création de l'élément input
-    const inputCategory = document.createElement("input");
-    inputCategory.setAttribute("type", "text");
-    inputCategory.classList.add("labelModal");
-    inputCategory.setAttribute("id", "category");
-    inputCategory.setAttribute("name", "category");
+    //element select 
+    const selectCategory = document.createElement("select");
+selectCategory.classList.add('labelModal');
+selectCategory.setAttribute("id", "category");
+selectCategory.setAttribute("name", "category");
+
+// Parcourir les données de catégories et créer des options
+categoriesData.forEach((category) => {
+  // Créer une option pour chaque catégorie
+  const option = document.createElement("option");
+  option.value = category.name;
+  option.text = category.name;
+
+  // Ajouter l'option à la liste déroulante
+  selectCategory.appendChild(option);
+});
+
+// Ajouter la liste déroulante à l'élément div
 
 
     const btnCheck = document.createElement('button');
@@ -339,10 +359,11 @@ function pictureInModal(data) {
     formContenair.appendChild(labelElement);
     formContenair.appendChild(inputElement);
     formContenair.appendChild(labelCategory);
-    formContenair.appendChild(inputCategory);
     window2.appendChild(hrWindow2);
     window2.appendChild(btnCheck);
     btnCheck.appendChild(checkText);
+    formContenair.appendChild(labelCategory);
+    labelCategory.appendChild(selectCategory);
   });
 
   // Ajout Supprimer la galerie
