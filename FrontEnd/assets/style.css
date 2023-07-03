@@ -606,17 +606,7 @@ hr {
   background-color: #e8f1f6;
 }
 
-.add-picture-button {
-  height: 36px;
-  width: 173px;
-  text-align: center;
-  background-color: #cbd6dc;
-  color: #306685;
-  font-size: 14px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-}
+
 
 .textAdd {
   font-family: Work Sans;
@@ -673,4 +663,17 @@ line-height: 17px;
 letter-spacing: 0em;
 text-align: center;
 
+}
+
+.inputFileBtn {
+  opacity: 0;
+  position: absolute;
+  bottom: 40px;
+  cursor: pointer;
+  height: 36px;
+}
+button.addImgButton {
+  background: #aad3e9;
+  border: none;
+  border-radius: 50px;
 }

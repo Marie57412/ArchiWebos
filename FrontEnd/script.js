@@ -281,12 +281,13 @@ function pictureInModal(data) {
     const addImage = document.createElement("i");
     addImage.classList.add("fa", "fa-image");
 
-    const addBtnPicture = document.createElement("button");
-    addBtnPicture.classList.add("add-picture-button");
-
-    const textBtnAdd = document.createElement("p");
-    textBtnAdd.innerText = "+ Ajouter photo";
-    textBtnAdd.classList.add("textAdd");
+    const addImgButton = document.createElement("button");
+    addImgButton.innerText = "+ Ajouter photo";
+     addImgButton.classList.add("addImgButton");
+     inputFileBtn = document.createElement("input");
+     inputFileBtn.type = "file";
+     inputFileBtn.accept = ".jpg, .png";
+     inputFileBtn.classList.add("inputFileBtn");
 
     const textFormat = document.createElement("p");
     textFormat.innerText = "jpg, png : 4mo max";
@@ -334,7 +335,7 @@ categoriesData.forEach((category) => {
   selectCategory.appendChild(option);
 });
 
-// Ajouter la liste déroulante à l'élément div
+
 
 
     const btnCheck = document.createElement('button');
@@ -352,8 +353,8 @@ categoriesData.forEach((category) => {
     window2.appendChild(titleWindow);
     window2.appendChild(addPicture);
     addPicture.appendChild(addImage);
-    addPicture.appendChild(addBtnPicture);
-    addBtnPicture.appendChild(textBtnAdd);
+    addPicture.appendChild(addImgButton);
+  
     addPicture.appendChild(textFormat);
     window2.appendChild(formContenair);
     formContenair.appendChild(labelElement);
