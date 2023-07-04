@@ -435,7 +435,6 @@ button.modif {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .modal-image {
@@ -606,8 +605,6 @@ hr {
   background-color: #e8f1f6;
 }
 
-
-
 .textAdd {
   font-family: Work Sans;
   font-size: 14px;
@@ -631,7 +628,6 @@ hr {
   background-color: white;
 }
 
-
 .label {
   display: flex;
   flex-direction: column;
@@ -647,22 +643,21 @@ hr {
 
 .checkBtn {
   width: 237px;
-  background-color: #A7A7A7;
+  background-color: #a7a7a7;
   height: 36px;
   border-radius: 60px;
   border: none;
   margin-top: 30px;
 }
 
-.checkcolor{
+.checkcolor {
   color: white;
   font-family: Syne;
-font-size: 14px;
-font-weight: 700;
-line-height: 17px;
-letter-spacing: 0em;
-text-align: center;
-
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .inputFileBtn {
@@ -676,4 +671,16 @@ button.addImgButton {
   background: #aad3e9;
   border: none;
   border-radius: 50px;
+  width: 30%;
+  height: 38px;
+}
+
+.previewImage {
+  position: absolute;
+    height: 170px;
+    
+}
+
+.hideBtn {
+  display: none;
 }

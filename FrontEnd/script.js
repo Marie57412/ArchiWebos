@@ -298,6 +298,23 @@ function pictureInModal(data) {
      inputFileBtn.accept = ".jpg, .png";
      inputFileBtn.classList.add("inputFileBtn");
 
+     const previewImage = document.createElement("img");
+     previewImage.classList.add("previewImage");
+      inputFileBtn.addEventListener("change", () => {
+        const [file] = inputFileBtn.files;
+        if (file) {
+          previewImage.src = URL.createObjectURL(file);
+          addImgButton.classList.add("hideBtn");
+        } // Déclenche l'ouverture de la boîte de dialogue de sélection de fichier
+    });
+    
+    // 
+    inputFileBtn.addEventListener('change', function(event) {
+      const file = event.target.files[0]; 
+     
+      console.log(file); 
+    });
+
     const textFormat = document.createElement("p");
     textFormat.innerText = "jpg, png : 4mo max";
     textFormat.classList.add("text-format");
@@ -345,10 +362,13 @@ categoriesData.forEach((category) => {
 });
 
 
-
-
     const btnCheck = document.createElement('button');
     btnCheck.classList.add('checkBtn');
+    btnCheck.addEventListener('click', function() {
+      if (submitForm()) {
+      
+      }
+    });
 
     const checkText = document.createElement('p');
     checkText.classList.add('checkcolor');
@@ -363,7 +383,8 @@ categoriesData.forEach((category) => {
     window2.appendChild(addPicture);
     addPicture.appendChild(addImage);
     addPicture.appendChild(addImgButton);
-  
+    addPicture.appendChild(inputFileBtn);
+    addPicture.appendChild(previewImage);
     addPicture.appendChild(textFormat);
     window2.appendChild(formContenair);
     formContenair.appendChild(labelElement);
@@ -427,4 +448,11 @@ categoriesData.forEach((category) => {
 
     modalWrapper.appendChild(deleteGalleryElement);
   }
+}
+
+//envoi du formulaire 
+
+function submitForm() {
+  // On vérifie si les champs sont remplis
+ 
 }
