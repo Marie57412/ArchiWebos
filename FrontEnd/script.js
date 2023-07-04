@@ -2,24 +2,32 @@ let worksData, categoriesData;
 
 /* recupération des données par l'api */
 
-fetch("http://localhost:5678/api/works")
-  .then((response) => response.json())
-  .then((data) => {
-    worksData = data;
-    picture(data);
-    console.log(data[0]);
-    return fetch("http://localhost:5678/api/categories");
-  })
-  .then((response) => response.json())
-  .then((category) => {
-    categoriesData = category;
-    filters(category);
-    console.log(category[0]);
-  })
-  .catch((error) => {
-    console.error("Une erreur s'est produite", error);
-  });
+async function init(){
+  /* Récupération des données de l'API */
+  const responseWorks = await fetch('http://localhost:5678/api/works');
+  const works = await responseWorks.json();
+  worksData = works; 
+  picture(worksData);
+  const responseCategories = await fetch('http://localhost:5678/api/categories');
+  const categories = await responseCategories.json();
+  categoriesData = categories;
+  filters(categoriesData);
+  }
 
+init()
+
+async function loadWorks(){
+  /* Récupération des données de l'API */
+  const responseWorks = fetch('http://localhost:5678/api/works');
+  responseWorks.then(reponse => {
+    return reponse.json();
+  })
+  .then(json => {
+    worksData = json;
+    picture(worksData);
+    
+  })
+}
 /* fonction qui permet affiche la gallery */
 function picture(data) {
   for (i = 0; i < data.length; i++) {
@@ -366,6 +374,7 @@ categoriesData.forEach((category) => {
 
     const btnCheck = document.createElement('button');
     btnCheck.classList.add('checkBtn');
+    btnCheck.id = 'btnCheck';
     btnCheck.addEventListener("click", (e) => {
       submitForm(inputFileBtn, inputElement, selectCategory);
       e.preventDefault();
@@ -453,45 +462,32 @@ categoriesData.forEach((category) => {
 
 //envoi du formulaire 
 
-function submitForm(inputFileBtn, inputElement, selectCategory) {
-  // Récupérer les valeurs des champs du formulaire
-  const title = document.getElementById("title").value;
-  const category = document.getElementById("category").value;
-  const imageFile = inputFileBtn.files[0]; // Récupérer le fichier d'image
 
-  // Vérifier que tous les champs sont remplis
-  if (title.trim() === '' || category.trim() === '' || !imageFile) {
-    alert("Veuillez remplir tous les champs du formulaire.");
-    return false;
-  }
 
-  // Créer un objet FormData pour envoyer les données du formulaire
+
+// ...
+
+// Fonction pour envoyer le formulaire
+async function submitForm(inputFileBtn, inputElement, selectCategory) {
   const formData = new FormData();
-  formData.append("title", title);
-  formData.append("category", category);
-  formData.append("image", imageFile);
-  token = sessionStorage.getItem("token");
+  const newWorkImg = inputFileBtn.files[0];
+  const newWorkTitle = inputElement.value;
+  const newWorkCategory = selectCategory.value;
+  token = (sessionStorage.getItem("token"));
 
-  // Envoyer le formulaire au serveur
-  fetch("http://localhost:5678/api/works", {
+  formData.append("image", newWorkImg);
+  formData.append("title", newWorkTitle);
+  formData.append("category", newWorkCategory);
+  
+  const response = await fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
-      "accept": "application/json", // Spécifie le type de contenu attendu en réponse
-      "Authorization": "Bearer " + token ,
+        "accept": "application/json",
+        "Authorization": `Bearer ${token}`,
     },
     body: formData
-  })
-  
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Le formulaire a été envoyé avec succès.", data);
-      // Effectuer d'autres actions après l'envoi du formulaire si nécessaire
     })
-    .catch((error) => {
-      console.error("Une erreur s'est produite lors de l'envoi du formulaire.", error);
-      return false;
-    });
-
-  return true;
-  
-}
+    if (response.ok) {
+      worksData = await loadWorks();
+    }
+  } 
