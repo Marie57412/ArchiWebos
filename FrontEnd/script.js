@@ -1,6 +1,7 @@
 let worksData, categoriesData;
 
 /* recupération des données par l'api */
+
 fetch("http://localhost:5678/api/works")
   .then((response) => response.json())
   .then((data) => {
@@ -153,7 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
   checkConnection();
 });
 
-//modale
+///////////////////////////////////modale//////////////////////////
+
 const modal = document.getElementById("modal1");
 const modifBtnModal = document.querySelector(".modifmodal");
 
@@ -364,10 +366,9 @@ categoriesData.forEach((category) => {
 
     const btnCheck = document.createElement('button');
     btnCheck.classList.add('checkBtn');
-    btnCheck.addEventListener('click', function() {
-      if (submitForm()) {
-      
-      }
+    btnCheck.addEventListener("click", (e) => {
+      submitForm(inputFileBtn, inputElement, selectCategory);
+      e.preventDefault();
     });
 
     const checkText = document.createElement('p');
@@ -430,17 +431,17 @@ categoriesData.forEach((category) => {
   }
 
   function deleteGallery() {
-    // Vider le tableau de données
+    // Vide le tableau de données
     data = [];
 
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-
+    
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
 
-    // Ajouter le message "Supprimer la galerie" dans la modal
+    // Ajoute le message "Supprimer la galerie" dans la modal
     const deleteGalleryElement = document.createElement("p");
     deleteGalleryElement.innerText = "Supprimer la galerie";
     deleteGalleryElement.classList.add("delete-gallery");
@@ -452,7 +453,45 @@ categoriesData.forEach((category) => {
 
 //envoi du formulaire 
 
-function submitForm() {
-  // On vérifie si les champs sont remplis
- 
+function submitForm(inputFileBtn, inputElement, selectCategory) {
+  // Récupérer les valeurs des champs du formulaire
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+  const imageFile = inputFileBtn.files[0]; // Récupérer le fichier d'image
+
+  // Vérifier que tous les champs sont remplis
+  if (title.trim() === '' || category.trim() === '' || !imageFile) {
+    alert("Veuillez remplir tous les champs du formulaire.");
+    return false;
+  }
+
+  // Créer un objet FormData pour envoyer les données du formulaire
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("category", category);
+  formData.append("image", imageFile);
+  token = sessionStorage.getItem("token");
+
+  // Envoyer le formulaire au serveur
+  fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      "accept": "application/json", // Spécifie le type de contenu attendu en réponse
+      "Authorization": "Bearer " + token ,
+    },
+    body: formData
+  })
+  
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Le formulaire a été envoyé avec succès.", data);
+      // Effectuer d'autres actions après l'envoi du formulaire si nécessaire
+    })
+    .catch((error) => {
+      console.error("Une erreur s'est produite lors de l'envoi du formulaire.", error);
+      return false;
+    });
+
+  return true;
+  
 }
