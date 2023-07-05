@@ -2,31 +2,33 @@ let worksData, categoriesData;
 
 /* recupération des données par l'api */
 
-async function init(){
+async function init() {
   /* Récupération des données de l'API */
-  const responseWorks = await fetch('http://localhost:5678/api/works');
+  const responseWorks = await fetch("http://localhost:5678/api/works");
   const works = await responseWorks.json();
-  worksData = works; 
+  worksData = works;
   picture(worksData);
-  const responseCategories = await fetch('http://localhost:5678/api/categories');
+  const responseCategories = await fetch(
+    "http://localhost:5678/api/categories"
+  );
   const categories = await responseCategories.json();
   categoriesData = categories;
   filters(categoriesData);
-  }
+}
 
-init()
+init();
 
-async function loadWorks(){
+async function loadWorks() {
   /* Récupération des données de l'API */
-  const responseWorks = fetch('http://localhost:5678/api/works');
-  responseWorks.then(reponse => {
-    return reponse.json();
-  })
-  .then(json => {
-    worksData = json;
-    picture(worksData);
-    
-  })
+  const responseWorks = fetch("http://localhost:5678/api/works");
+  responseWorks
+    .then((reponse) => {
+      return reponse.json();
+    })
+    .then((json) => {
+      worksData = json;
+      picture(worksData);
+    });
 }
 /* fonction qui permet affiche la gallery */
 function picture(data) {
@@ -274,21 +276,20 @@ function pictureInModal(data) {
     // Créer la deuxième fenêtre
     const window2 = document.createElement("div");
     window2.classList.add("window2", "modal");
-    
 
     const leftArrow = document.createElement("i");
     leftArrow.classList.add("fa", "fa-arrow-left");
-    leftArrow.addEventListener('click', function(){
+    leftArrow.addEventListener("click", function () {
       modalWrapper.style.display = "flex";
-      const window2 = document.querySelector(".window2");     //retour fenêtre 1 
+      const window2 = document.querySelector(".window2"); //retour fenêtre 1
       window2.style.display = "none";
-    })
+    });
 
     const cross = document.createElement("i");
     cross.classList.add("fa", "fa-times");
-    cross.addEventListener('click', function(){
+    cross.addEventListener("click", function () {
       closeModal();
-    })
+    });
 
     const titleWindow = document.createElement("h2");
     titleWindow.innerText = "Ajout photo";
@@ -302,27 +303,27 @@ function pictureInModal(data) {
 
     const addImgButton = document.createElement("button");
     addImgButton.innerText = "+ Ajouter photo";
-     addImgButton.classList.add("addImgButton");
-     inputFileBtn = document.createElement("input");
-     inputFileBtn.type = "file";
-     inputFileBtn.accept = ".jpg, .png";
-     inputFileBtn.classList.add("inputFileBtn");
+    addImgButton.classList.add("addImgButton");
+    inputFileBtn = document.createElement("input");
+    inputFileBtn.type = "file";
+    inputFileBtn.accept = ".jpg, .png";
+    inputFileBtn.classList.add("inputFileBtn");
 
-     const previewImage = document.createElement("img");
-     previewImage.classList.add("previewImage");
-      inputFileBtn.addEventListener("change", () => {
-        const [file] = inputFileBtn.files;
-        if (file) {
-          previewImage.src = URL.createObjectURL(file);
-          addImgButton.classList.add("hideBtn");
-        } // Déclenche l'ouverture de la boîte de dialogue de sélection de fichier
+    const previewImage = document.createElement("img");
+    previewImage.classList.add("previewImage");
+    inputFileBtn.addEventListener("change", () => {
+      const [file] = inputFileBtn.files;
+      if (file) {
+        previewImage.src = URL.createObjectURL(file);
+        addImgButton.classList.add("hideBtn");
+      } // Déclenche l'ouverture de la boîte de dialogue de sélection de fichier
     });
-    
-    // 
-    inputFileBtn.addEventListener('change', function(event) {
-      const file = event.target.files[0]; 
-     
-      console.log(file); 
+
+    //
+    inputFileBtn.addEventListener("change", function (event) {
+      const file = event.target.files[0];
+
+      console.log(file);
     });
 
     const textFormat = document.createElement("p");
@@ -332,7 +333,7 @@ function pictureInModal(data) {
     //formulaire
 
     const formContenair = document.createElement("div");
-    formContenair.classList.add('form-contenair');
+    formContenair.classList.add("form-contenair");
 
     const labelElement = document.createElement("label");
     labelElement.setAttribute("for", "title");
@@ -350,46 +351,59 @@ function pictureInModal(data) {
     labelCategory.classList.add("label");
     labelCategory.innerText = "Catégorie";
 
-
     const hrWindow2 = document.createElement("hr");
-   
 
-    //element select 
+    //element select
     const selectCategory = document.createElement("select");
-    selectCategory.classList.add('labelModal');
+    selectCategory.classList.add("labelModal");
     selectCategory.setAttribute("id", "category");
     selectCategory.setAttribute("name", "category");
-    
+
     // Parcourir les données de catégories et créer des options
     categoriesData.forEach((category) => {
       // Créer une option pour chaque catégorie
       const option = document.createElement("option");
       option.value = category.id;
       option.text = category.name;
-    
-      // Ajouter l'option à la liste déroulante
+
+      // Ajoute l'option à la liste déroulante
       selectCategory.appendChild(option);
+      formContenair.appendChild(labelCategory);
+      labelCategory.appendChild(selectCategory);
     });
-    
+
     // Mettre à jour la première option avec "Choisissez une catégorie"
     const firstOption = selectCategory.options[0];
     if (firstOption.text === "Tous") {
       firstOption.text = "Choisissez une catégorie";
-    };
+    }
 
-
-    const btnCheck = document.createElement('button');
-    btnCheck.classList.add('checkBtn');
-    btnCheck.id = 'btnCheck';
+    const btnCheck = document.createElement("button");
+    btnCheck.classList.add("checkBtn");
+    btnCheck.id = "btnCheck";
     btnCheck.addEventListener("click", (e) => {
       submitForm(inputFileBtn, inputElement, selectCategory);
       e.preventDefault();
-
-      
     });
 
-    
-    
+    // Ensuite, vous pouvez attacher les écouteurs d'événements et définir la fonction `checkFormFields`.
+    // Assurez-vous que cette partie du code se trouve après la déclaration des variables.
+    inputElement.addEventListener("input", checkFormFields);
+    selectCategory.addEventListener("change", checkFormFields);
+    inputFileBtn.addEventListener("change", checkFormFields);
+
+    function checkFormFields() {
+      if (
+        inputFileBtn.files.length > 0 &&
+        inputElement.value !== "" &&
+        selectCategory.value !== "0"
+      ) {
+        btnCheck.style.backgroundColor = "green";
+      } else {
+        btnCheck.style.backgroundColor = "";
+      }
+    }
+
     // Ajout des éléments à l'élément div
 
     modal.appendChild(window2);
@@ -409,8 +423,6 @@ function pictureInModal(data) {
     window2.appendChild(hrWindow2);
     window2.appendChild(btnCheck);
     btnCheck.appendChild(checkText);
-    formContenair.appendChild(labelCategory);
-    labelCategory.appendChild(selectCategory);
   });
 
   // Ajout Supprimer la galerie
@@ -425,17 +437,17 @@ function pictureInModal(data) {
 
   async function deletePhoto(index) {
     const deletedItem = data[index];
-  
+
     // Supprimer la photo du tableau de données
     data.splice(index, 1);
-  
+
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-  
+
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector(".gallery");
     const galleryItems = gallery.querySelectorAll("figure");
-  
+
     // Trouver l'élément correspondant à la photo supprimée et le supprimer de la galerie en dehors de la modal
     for (let i = 0; i < galleryItems.length; i++) {
       const item = galleryItems[i];
@@ -445,17 +457,20 @@ function pictureInModal(data) {
         break;
       }
     }
-  
+
     // Supprimer la photo via l'API
     const token = sessionStorage.getItem("token");
-    const response = await fetch(`http://localhost:5678/api/works/${deletedItem.id}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "*/*",
-        Authorization: `Bearer ${token}`
+    const response = await fetch(
+      `http://localhost:5678/api/works/${deletedItem.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "*/*",
+          Authorization: `Bearer ${token}`,
+        },
       }
-    });
-  
+    );
+
     if (response.ok) {
       console.log("Photo supprimée avec succès");
     } else {
@@ -469,7 +484,7 @@ function pictureInModal(data) {
 
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-    
+
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
@@ -484,23 +499,11 @@ function pictureInModal(data) {
   }
 }
 
-//envoi du formulaire 
+//envoi du formulaire
 
-
-const checkText = document.createElement('p');
-    checkText.classList.add('checkcolor');
-    checkText.innerText = 'Valider';
-
-    function checkFormFields() {
-      const title = inputElement.value;
-      const category = selectCategory.value;
-    
-      if (title.trim() !== "" && category !== "default") {
-        btnCheck.style.backgroundColor = "green";
-      } else {
-        btnCheck.style.backgroundColor = "";
-      }
-    }
+const checkText = document.createElement("p");
+checkText.classList.add("checkcolor");
+checkText.innerText = "Valider";
 
 // ...
 
@@ -510,22 +513,26 @@ async function submitForm(inputFileBtn, inputElement, selectCategory) {
   const newWorkImg = inputFileBtn.files[0];
   const newWorkTitle = inputElement.value;
   const newWorkCategory = selectCategory.value;
-  token = (sessionStorage.getItem("token"));
+  token = sessionStorage.getItem("token");
 
+  if (!newWorkImg || !newWorkTitle || newWorkCategory === "0") {
+    alert("Veuillez remplir tous les champs du formulaire.");
+    return;
+  }
+  
   formData.append("image", newWorkImg);
   formData.append("title", newWorkTitle);
   formData.append("category", newWorkCategory);
-  
+
   const response = await fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
-        "accept": "application/json",
-        "Authorization": `Bearer ${token}`,
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: formData
-    })
-    if (response.ok) {
-      
-      worksData = await loadWorks();
-    }
-  } 
+    body: formData,
+  });
+  if (response.ok) {
+    worksData = await loadWorks();
+  }
+}

@@ -684,6 +684,8 @@ button.addImgButton {
 .hideBtn {
   display: none;
 }
-.valid {
- background-color: #1D6154;
+
+
+.checkBtn--filled {
+  background-color: #1D6154;
 }
