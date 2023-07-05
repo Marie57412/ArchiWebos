@@ -356,20 +356,26 @@ function pictureInModal(data) {
 
     //element select 
     const selectCategory = document.createElement("select");
-selectCategory.classList.add('labelModal');
-selectCategory.setAttribute("id", "category");
-selectCategory.setAttribute("name", "category");
-
-// Parcourir les données de catégories et créer des options
-categoriesData.forEach((category) => {
-  // Créer une option pour chaque catégorie
-  const option = document.createElement("option");
-  option.value = category.id;
-  option.text = category.name;
-
-  // Ajouter l'option à la liste déroulante
-  selectCategory.appendChild(option);
-});
+    selectCategory.classList.add('labelModal');
+    selectCategory.setAttribute("id", "category");
+    selectCategory.setAttribute("name", "category");
+    
+    // Parcourir les données de catégories et créer des options
+    categoriesData.forEach((category) => {
+      // Créer une option pour chaque catégorie
+      const option = document.createElement("option");
+      option.value = category.id;
+      option.text = category.name;
+    
+      // Ajouter l'option à la liste déroulante
+      selectCategory.appendChild(option);
+    });
+    
+    // Mettre à jour la première option avec "Choisissez une catégorie"
+    const firstOption = selectCategory.options[0];
+    if (firstOption.text === "Tous") {
+      firstOption.text = "Choisissez une catégorie";
+    };
 
 
     const btnCheck = document.createElement('button');
