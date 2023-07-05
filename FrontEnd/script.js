@@ -364,7 +364,7 @@ selectCategory.setAttribute("name", "category");
 categoriesData.forEach((category) => {
   // Créer une option pour chaque catégorie
   const option = document.createElement("option");
-  option.value = category.name;
+  option.value = category.id;
   option.text = category.name;
 
   // Ajouter l'option à la liste déroulante
