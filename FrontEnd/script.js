@@ -384,12 +384,12 @@ function pictureInModal(data) {
     btnCheck.addEventListener("click", (e) => {
       submitForm(inputFileBtn, inputElement, selectCategory);
       e.preventDefault();
+
+      
     });
 
-    const checkText = document.createElement('p');
-    checkText.classList.add('checkcolor');
-    checkText.innerText = 'Valider';
-
+    
+    
     // Ajout des éléments à l'élément div
 
     modal.appendChild(window2);
@@ -423,17 +423,19 @@ function pictureInModal(data) {
   buttonContainer.appendChild(addButton);
   buttonContainer.appendChild(deleteGalleryElement);
 
-  function deletePhoto(index) {
+  async function deletePhoto(index) {
+    const deletedItem = data[index];
+  
     // Supprimer la photo du tableau de données
-    const deletedItem = data.splice(index, 1)[0];
-
+    data.splice(index, 1);
+  
     // Mettre à jour l'affichage de la galerie dans la modal
     pictureInModal(data);
-
+  
     // Mettre à jour l'affichage de la galerie en dehors de la modal
     const gallery = document.querySelector(".gallery");
     const galleryItems = gallery.querySelectorAll("figure");
-
+  
     // Trouver l'élément correspondant à la photo supprimée et le supprimer de la galerie en dehors de la modal
     for (let i = 0; i < galleryItems.length; i++) {
       const item = galleryItems[i];
@@ -442,6 +444,22 @@ function pictureInModal(data) {
         gallery.removeChild(item);
         break;
       }
+    }
+  
+    // Supprimer la photo via l'API
+    const token = sessionStorage.getItem("token");
+    const response = await fetch(`http://localhost:5678/api/works/${deletedItem.id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "*/*",
+        Authorization: `Bearer ${token}`
+      }
+    });
+  
+    if (response.ok) {
+      console.log("Photo supprimée avec succès");
+    } else {
+      console.log("Erreur lors de la suppression de la photo côté serveur");
     }
   }
 
@@ -469,7 +487,20 @@ function pictureInModal(data) {
 //envoi du formulaire 
 
 
+const checkText = document.createElement('p');
+    checkText.classList.add('checkcolor');
+    checkText.innerText = 'Valider';
 
+    function checkFormFields() {
+      const title = inputElement.value;
+      const category = selectCategory.value;
+    
+      if (title.trim() !== "" && category !== "default") {
+        btnCheck.style.backgroundColor = "green";
+      } else {
+        btnCheck.style.backgroundColor = "";
+      }
+    }
 
 // ...
 
@@ -494,6 +525,7 @@ async function submitForm(inputFileBtn, inputElement, selectCategory) {
     body: formData
     })
     if (response.ok) {
+      
       worksData = await loadWorks();
     }
   } 
