@@ -50,7 +50,7 @@ function picture(data) {
 }
 
 function filters(category) {
-  category.unshift({ name: "Tous" });
+  category.unshift({id: 0, name: "Tous" });
 
   for (i = 0; i < category.length; i++) {
     const filterbtn = document.querySelector(".filters-btn");
@@ -519,7 +519,7 @@ async function submitForm(inputFileBtn, inputElement, selectCategory) {
     alert("Veuillez remplir tous les champs du formulaire.");
     return;
   }
-  
+
   formData.append("image", newWorkImg);
   formData.append("title", newWorkTitle);
   formData.append("category", newWorkCategory);
