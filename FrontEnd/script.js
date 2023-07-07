@@ -82,6 +82,7 @@ function filters(category) {
     });
   });
 }
+
 function checkConnection() {
   // Récupération du token depuis le sessionStorage
   const token = sessionStorage.getItem("token");
@@ -386,12 +387,13 @@ function pictureInModal(data) {
       e.preventDefault();
     });
 
-    // Ensuite, vous pouvez attacher les écouteurs d'événements et définir la fonction `checkFormFields`.
-    // Assurez-vous que cette partie du code se trouve après la déclaration des variables.
+    
+    
     inputElement.addEventListener("input", checkFormFields);
     selectCategory.addEventListener("change", checkFormFields);
     inputFileBtn.addEventListener("change", checkFormFields);
-
+    
+    
     function checkFormFields() {
       if (
         inputFileBtn.files.length > 0 &&

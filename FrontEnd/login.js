@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location.href = 'index.html';
         } else {
           // Affichage du message d'erreur
-          document.getElementById('error-message').textContent = 'Informations utilisateur/mot de passe incorrectes. Veuillez réessayer.';
+          document.getElementById('error-message').textContent = 'Erreur dans l’identifiant ou le mot de passe';
           document.getElementById('error-message').style.display = 'block';
         }
       } catch (error) {
