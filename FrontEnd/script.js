@@ -270,19 +270,21 @@ function pictureInModal(data) {
   addButton.innerText = "Ajouter une photo";
   addButton.classList.add("add-photo-button");
 
+  let window2;
+
   addButton.addEventListener("click", function () {
     // Masquer la première fenêtre (modalWrapper)
     modalWrapper.style.display = "none";
 
     // Créer la deuxième fenêtre
-    const window2 = document.createElement("div");
+     window2 = document.createElement("div");
     window2.classList.add("window2", "modal");
 
     const leftArrow = document.createElement("i");
     leftArrow.classList.add("fa", "fa-arrow-left");
     leftArrow.addEventListener("click", function () {
       modalWrapper.style.display = "flex";
-      const window2 = document.querySelector(".window2"); //retour fenêtre 1
+        //retour fenêtre 1
       window2.style.display = "none";
     });
 
