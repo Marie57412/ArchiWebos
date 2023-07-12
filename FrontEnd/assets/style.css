@@ -546,6 +546,7 @@ hr {
   font-size: 9px;
   text-align: center;
   padding-top: 3px;
+  cursor: pointer;
 }
 
 .fa-arrow-left {
@@ -649,6 +650,7 @@ hr {
   border-radius: 60px;
   border: none;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .checkcolor {
@@ -674,6 +676,7 @@ button.addImgButton {
   border-radius: 50px;
   width: 30%;
   height: 38px;
+  cursor: pointer;
 }
 
 .previewImage {

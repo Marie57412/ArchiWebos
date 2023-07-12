@@ -387,6 +387,12 @@ function pictureInModal(data) {
     btnCheck.addEventListener("click", (e) => {
       submitForm(inputFileBtn, inputElement, selectCategory);
       e.preventDefault();
+      window2.style.display = "none";
+
+  // Afficher modalWrapper
+  modalWrapper.style.display = "flex";
+
+  e.preventDefault();
     });
 
     
@@ -402,7 +408,7 @@ function pictureInModal(data) {
         inputElement.value !== "" &&
         selectCategory.value !== "0"
       ) {
-        btnCheck.style.backgroundColor = "green";
+        btnCheck.style.backgroundColor = "#1d6154";
       } else {
         btnCheck.style.backgroundColor = "";
       }
