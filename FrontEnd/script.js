@@ -32,8 +32,12 @@ async function loadWorks() {
 }
 /* fonction qui permet affiche la gallery */
 function picture(data) {
+  const gallery = document.querySelector(".gallery");
+  while (gallery.firstChild) {
+    gallery.removeChild(gallery.firstChild);
+  }
   for (i = 0; i < data.length; i++) {
-    const gallery = document.querySelector(".gallery");
+    
 
     const figure = document.createElement("figure");
 
@@ -214,19 +218,22 @@ function pictureInModal(data) {
   galleryTitle.innerText = "Galerie Photo";
   galleryTitle.classList.add("modal-title");
   modalWrapper.appendChild(galleryTitle);
-
   const gallery = document.createElement("div");
   gallery.classList.add("modal-gallery");
+  
 
   for (let i = 0; i < data.length; i++) {
+    
     const figure = document.createElement("figure");
-
+    
     const imageContainer = document.createElement("div");
     imageContainer.classList.add("image-container");
+    imageContainer.id = `image-${data[i].id}`;
 
     const imageElement = document.createElement("img");
     imageElement.src = data[i].imageUrl;
     imageElement.classList.add("modal-image");
+    
 
     const iconsContainer = document.createElement("div");
     iconsContainer.classList.add("icons-container");
@@ -388,12 +395,14 @@ function pictureInModal(data) {
       submitForm(inputFileBtn, inputElement, selectCategory);
       e.preventDefault();
       window2.style.display = "none";
+      
 
   // Afficher modalWrapper
   modalWrapper.style.display = "flex";
 
   e.preventDefault();
     });
+    
 
     
     
@@ -542,7 +551,9 @@ async function submitForm(inputFileBtn, inputElement, selectCategory) {
     },
     body: formData,
   });
+
   if (response.ok) {
     worksData = await loadWorks();
+    
   }
 }
